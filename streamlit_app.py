@@ -49,6 +49,7 @@ def get_nombre_docente(token):
 
 # Obtener el token completo de los parámetros de consulta
 query_params = st.query_params
+st.write(query_params)
 token = query_params.get("token", None)
 st.write("HOLAAAAAA WUJUUUU")
 nombre_texto = get_nombre_docente(token)
