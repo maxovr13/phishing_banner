@@ -3,7 +3,7 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 
 st.set_page_config(
-    page_title="Test de SpearPhishing",
+    page_title="Spear Phishing Project",
     page_icon="fishing_pole_and_fish"
 )
 
