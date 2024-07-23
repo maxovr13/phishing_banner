@@ -49,9 +49,7 @@ def get_nombre_docente(token):
 
 # Obtener el token completo de los parámetros de consulta
 query_params = st.query_params
-st.write(query_params)
 token = query_params.get("token", None)
-st.write("HOLAAAAAA WUJUUUU")
 nombre_texto = get_nombre_docente(token)
 # Verificar si se proporcionó un token válido
 if token:
@@ -75,5 +73,3 @@ if token:
         st.error("Token inválido o docente no encontrado.")
 else:
     st.error("No se proporcionó un token.")
-
-st.dataframe(data)
