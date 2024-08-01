@@ -24,7 +24,7 @@ def update_access_status(token):
     index = df.index[df['token'] == token].tolist()
     if index:
         df.at[index[0], 'accedio'] = 1
-        conn.update(worksheet = "Hoja 1", data = df)
+        conn.update(worksheet = "LLMSecurityGroup", data = df) #CAMBIAR A LA HOJA DE CALCULO QUE SE ESTE USANDO
         # Convertir DataFrame a lista de listas y actualizar la hoja de cálculo
         #records = df.values.tolist()
         #header = df.columns.values.tolist()
