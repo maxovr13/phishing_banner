@@ -82,6 +82,18 @@ if token:
         st.markdown("Además, señalar que los resultados de este test serán **ANONIMIZADOS**, es decir, nadie más que quienes trabajan en el desarrollo de este proyecto sabrán que has respondido.")
         st.title("Formulario de Pregunta")
 
+        # Actualizar el estado de acceso si aún no se ha registrado
+        if not (docente['accedio1'] or docente['accedio2'] or docente['accedio3']):
+            update_access_status(token)
+            st.write("¡Muchas gracias por participar!")
+        else:
+            st.write("¡Muchas gracias por participar!")
+    else:
+        st.error("Token inválido o docente no encontrado.")
+else:
+    st.error("No se proporcionó un token.")
+st.title("Formulario de Pregunta")
+
 # Pregunta y caja de texto
 respuesta = st.text_area("Hola, ¿cómo estás?")
 
@@ -108,13 +120,3 @@ if st.button("Submit"):
             st.error("No se proporcionó un token.")
     else:
         st.error("Por favor, ingresa una respuesta.")
-        # Actualizar el estado de acceso si aún no se ha registrado
-        if not (docente['accedio1'] or docente['accedio2'] or docente['accedio3']):
-            update_access_status(token)
-            st.write("¡Muchas gracias por participar!")
-        else:
-            st.write("¡Muchas gracias por participar!")
-    else:
-        st.error("Token inválido o docente no encontrado.")
-else:
-    st.error("No se proporcionó un token.")
