@@ -104,10 +104,10 @@ opciones = {
 }
 
 # Pregunta 1: ¿Cómo te encuentras del 1 al 5? Mal o bien
-respuesta1 = st.radio("¿Cómo te encuentras del 1 al 5? Mal o bien", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta1 = st.radio("como andai pal lol?", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 # Pregunta 2: ¿Qué tanto sueño tienes?
-respuesta2 = st.radio("¿Qué tanto sueño tienes del 1 al 5?", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta2 = st.radio("como encontrai al yasuo tanque", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 # Botón de enviar
 if st.button("Submit"):
