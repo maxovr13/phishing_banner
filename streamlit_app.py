@@ -21,10 +21,21 @@ df = pd.DataFrame(data)  # Convertir a DataFrame
 # Actualizar el estado de acceso en la hoja de cálculo
 def update_access_status(token):
     global df  # Usar el DataFrame global para actualizar
-    index = df.index[df['token'] == token].tolist()
-    if index:
-        df.at[index[0], 'accedio'] = 1
-        conn.update(worksheet = "LLMSecurityGroup", data = df) #CAMBIAR A LA HOJA DE CALCULO QUE SE ESTE USANDO
+    
+    # Buscar el índice donde el token coincida con cualquiera de las columnas
+    index1 = df.index[df['token1'] == token].tolist()
+    index2 = df.index[df['token2'] == token].tolist()
+    index3 = df.index[df['token3'] == token].tolist()
+    
+    if index1:
+        df.at[index1[0], 'accedio1'] = 1
+    elif index2:
+        df.at[index2[0], 'accedio2'] = 1
+    elif index3:
+        df.at[index3[0], 'accedio3'] = 1
+    
+    # Actualizar la hoja de cálculo
+    conn.update(worksheet="LLMSecurityGroup", data=df)
         # Convertir DataFrame a lista de listas y actualizar la hoja de cálculo
         #records = df.values.tolist()
         #header = df.columns.values.tolist()
@@ -32,19 +43,25 @@ def update_access_status(token):
 
 # Obtener la información del docente por token
 def get_docente_info(token):
-    docente = df[df['token'] == token]
+    docente = df[(df['token1'] == token) | (df['token2'] == token) | (df['token3'] == token)]
     if not docente.empty:
-        # Convertir el valor de 'accedio' a booleano
+        # Convertir los valores de 'accedio1', 'accedio2', 'accedio3' a booleano
         docente_info = docente.iloc[0].to_dict()
-        docente_info['accedio'] = bool(docente_info['accedio'])
+        docente_info['accedio1'] = bool(docente_info['accedio1'])
+        docente_info['accedio2'] = bool(docente_info['accedio2'])
+        docente_info['accedio3'] = bool(docente_info['accedio3'])
         return docente_info
     else:
         return None
 
+# Obtener el nombre del docente por token
 def get_nombre_docente(token):
-    docente = df[df['token'] == token]
-    nombre_docente = docente["nombre"]
-    return nombre_docente
+    docente = df[(df['token1'] == token) | (df['token2'] == token) | (df['token3'] == token)]
+    if not docente.empty:
+        nombre_docente = docente.iloc[0]["nombre"]
+        return nombre_docente
+    else:
+        return None
 
 
 # Obtener el token completo de los parámetros de consulta
