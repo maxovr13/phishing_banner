@@ -134,7 +134,7 @@ if st.button("Submit"):
                 # Actualizar las respuestas en las columnas correspondientes
                 df.at[index[0], 'pregunta1'] = respuesta1
                 df.at[index[0], 'pregunta2'] = respuesta2
-                df.at[index[0], 'pregunta1'] = respuesta3
+                df.at[index[0], 'pregunta3'] = respuesta3
                 
                 # Actualizar la hoja de cálculo
                 conn.update(worksheet="LLMSecurityGroup", data=df)
