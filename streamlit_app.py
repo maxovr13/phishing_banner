@@ -103,11 +103,21 @@ opciones = {
     5: "Muy bien / Muy alto"
 }
 
+opciones_influencia = {
+    1: "Reciprocidad",
+    2: "Compromiso",
+    3: "Demostración social",
+    4: "Simpatía",
+    5: "Autoridad",
+    6: "Escasez"
+}
+
+respuesta1 = st.radio("¿Qué principio de influencia crees que está presente en el siguiente correo?", options=list(opciones_influencia.keys()), format_func=lambda x: opciones_influencia[x])
 # Pregunta 1: ¿Cómo te encuentras del 1 al 5? Mal o bien
-respuesta1 = st.radio("como andai pal lol?", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta2 = st.radio("como andai pal lol?", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 # Pregunta 2: ¿Qué tanto sueño tienes?
-respuesta2 = st.radio("como encontrai al yasuo tanque", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta3 = st.radio("como encontrai al yasuo tanque", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 # Botón de enviar
 if st.button("Submit"):
@@ -124,6 +134,7 @@ if st.button("Submit"):
                 # Actualizar las respuestas en las columnas correspondientes
                 df.at[index[0], 'pregunta1'] = respuesta1
                 df.at[index[0], 'pregunta2'] = respuesta2
+                df.at[index[0], 'pregunta1'] = respuesta3
                 
                 # Actualizar la hoja de cálculo
                 conn.update(worksheet="LLMSecurityGroup", data=df)
