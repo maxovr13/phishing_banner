@@ -80,7 +80,34 @@ if token:
         st.write("El correo que leíste anteriormente tenía la intención de vulnerar las posibles defensas que pueda tener una organización como la que perteneces por medio de la implementación de ingeniería social.")
         st.markdown("Destacar que al ser una prueba **ESTO NO GENERA NI UN RIESGO NI PARA TI NI PARA LA ORGANIZACIÓN A LA QUE PERTENECES**.")
         st.markdown("Además, señalar que los resultados de este test serán **ANONIMIZADOS**, es decir, nadie más que quienes trabajan en el desarrollo de este proyecto sabrán que has respondido.")
-        respuesta = st.text_area("Hola, ¿cómo estás?")
+        st.title("Formulario de Pregunta")
+
+# Pregunta y caja de texto
+respuesta = st.text_area("Hola, ¿cómo estás?")
+
+# Botón de enviar
+if st.button("Submit"):
+    if respuesta:
+        # Obtener el token del parámetro de consulta (si es necesario para identificar la fila)
+        query_params = st.query_params
+        token = query_params.get("token", None)
+        
+        if token:
+            # Buscar la fila correspondiente en el DataFrame
+            index = df.index[(df['token1'] == token) | (df['token2'] == token) | (df['token3'] == token)].tolist()
+            
+            if index:
+                # Actualizar la respuesta en la columna 'pregunta1'
+                df.at[index[0], 'pregunta1'] = respuesta
+                # Actualizar la hoja de cálculo
+                conn.update(worksheet="Hoja 1", data=df)
+                st.success("Respuesta enviada y guardada con éxito.")
+            else:
+                st.error("Token inválido o docente no encontrado.")
+        else:
+            st.error("No se proporcionó un token.")
+    else:
+        st.error("Por favor, ingresa una respuesta.")
         # Actualizar el estado de acceso si aún no se ha registrado
         if not (docente['accedio1'] or docente['accedio2'] or docente['accedio3']):
             update_access_status(token)
