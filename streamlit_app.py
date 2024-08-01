@@ -80,6 +80,7 @@ if token:
         st.write("El correo que leíste anteriormente tenía la intención de vulnerar las posibles defensas que pueda tener una organización como la que perteneces por medio de la implementación de ingeniería social.")
         st.markdown("Destacar que al ser una prueba **ESTO NO GENERA NI UN RIESGO NI PARA TI NI PARA LA ORGANIZACIÓN A LA QUE PERTENECES**.")
         st.markdown("Además, señalar que los resultados de este test serán **ANONIMIZADOS**, es decir, nadie más que quienes trabajan en el desarrollo de este proyecto sabrán que has respondido.")
+        respuesta = st.text_area("Hola, ¿cómo estás?")
         # Actualizar el estado de acceso si aún no se ha registrado
         if not (docente['accedio1'] or docente['accedio2'] or docente['accedio3']):
             update_access_status(token)
