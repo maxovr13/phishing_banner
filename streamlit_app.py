@@ -12,7 +12,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 # Leer datos de la hoja de cálculo
 @st.cache_data(ttl=0)  # Desactivar el caché para la lectura de datos
 def load_data():
-    return conn.read(worksheet="Hoja 1", ttl = 5) #importante para actualizacion inmediata
+    return conn.read(worksheet="LLMSecurityGroup", ttl = 5) #importante para actualizacion inmediata
 
 data = load_data()
 
