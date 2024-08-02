@@ -96,11 +96,11 @@ st.title("Formulario de Evaluación")
 
 # Escala de Likert (del 1 al 5)
 opciones = {
-    1: "Muy mal / Muy bajo",
-    2: "Mal / Bajo",
+    1: "Totalmente en desacuerdo",
+    2: "En desacuerdo",
     3: "Neutral",
-    4: "Bien / Alto",
-    5: "Muy bien / Muy alto"
+    4: "De acuerdo",
+    5: "Totalmente de acuerdo"
 }
 
 opciones_influencia = {
@@ -112,12 +112,33 @@ opciones_influencia = {
     6: "Escasez"
 }
 
-respuesta1 = st.radio("¿Qué principio de influencia crees que está presente en el siguiente correo?", options=list(opciones_influencia.keys()), format_func=lambda x: opciones_influencia[x])
-# Pregunta 1: ¿Cómo te encuentras del 1 al 5? Mal o bien
-respuesta2 = st.radio("como andai pal lol?", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+#Preunta 1: Tiene como objteivo conocer la razon por la que entraron al enlace
+respuesta1 = st.text_area("¿Qué fue lo que te convenció de ingresar al enlace del correo?")
 
-# Pregunta 2: ¿Qué tanto sueño tienes?
-respuesta3 = st.radio("como encontrai al yasuo tanque", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+#Preunta 2: Tiene como objetivo ver que tanto saben los participantes de los principios de influencia
+respuesta2 = st.radio("¿Qué principio de influencia crees que está presente en el siguiente correo?", options=list(opciones_influencia.keys()), format_func=lambda x: opciones_influencia[x])
+
+# Pregunta 3: Tiene como objetivo analizar el estado en que se recibe el correo. si es que leyo poco es un gran indicio
+respuesta3 = st.radio("Leí todo el correo antes de decidir si hacer clic en el enlace.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+
+#Pregunta 4: Tiene como objetivo conocer las razones del porque entro al enlace si es que ese fue el caso
+respuesta4 = st.radio("El correo no me pareció convincente. Entré al enlace por curiosidad.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+
+# Pregunta 5: Tiene como objetivo analizar que tan convincente fue el correo
+respuesta5 = st.radio("El correo fue convincente y no dudé en ningún momento de su veracidad.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+
+#Pregunta 6: tiene como objetivo demostrar si el estar consciente de la prueba fue un factor a considerar
+respuesta6 = st.radio("Estaba consciente de que en algún momento me llegaría un correo de spear phishing, por lo que dudé de la veracidad del correo.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+
+#Pregunta 7 : Tiene como objetivo saber cuanto sabia respecto al tema el participante
+respuesta7 = st.radio("Tengo suficiente conocimiento del tema como para detectar ataques de spear phishing.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+
+#Pregunta 8: Retroalimentacion acerca del formato del correo, ver si es necesario cambiarlo o con lo que tiene es aceptable
+respuesta8 = st.radio("Añadir imágenes o logos al correo lo haría más convincente.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+
+#Pregunta 9  :Retroalmientacion para pruebas a futuro
+respuesta9 = st.radio("Alguien que no es consciente de estar participando en una prueba de spear phishing podría caer en la trampa y hacer clic en el enlace.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+
 
 # Botón de enviar
 if st.button("Submit"):
@@ -135,6 +156,12 @@ if st.button("Submit"):
                 df.at[index[0], 'pregunta1'] = respuesta1
                 df.at[index[0], 'pregunta2'] = respuesta2
                 df.at[index[0], 'pregunta3'] = respuesta3
+                df.at[index[0], 'pregunta4'] = respuesta4
+                df.at[index[0], 'pregunta5'] = respuesta5
+                df.at[index[0], 'pregunta6'] = respuesta6
+                df.at[index[0], 'pregunta7'] = respuesta7
+                df.at[index[0], 'pregunta8'] = respuesta8
+                df.at[index[0], 'pregunta9'] = respuesta9
                 
                 # Actualizar la hoja de cálculo
                 conn.update(worksheet="LLMSecurityGroup", data=df)
