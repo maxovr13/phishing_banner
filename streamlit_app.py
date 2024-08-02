@@ -92,7 +92,7 @@ if token:
 else:
     st.error("No se proporcionó un token.")
 # Mostrar el formulario
-st.title("Formulario de Evaluación")
+st.title("Formulario para feedback")
 st.write("Con la intención de mejorar esta herramienta, por favor responde las siguientes preguntas. En caso de haber ingresado a esta página a través de otro enlace de spear phishing, no es necesario que vuelvas a responder.")
 # Escala de Likert (del 1 al 5)
 opciones = {
