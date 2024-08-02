@@ -141,7 +141,7 @@ respuesta9 = st.radio("9. Alguien que no es consciente de estar participando en 
 
 
 # Botón de enviar
-if st.button("Submit"):
+if st.button("Enviar"):
     if respuesta1 and respuesta2:
         # Obtener el token del parámetro de consulta (si es necesario para identificar la fila)
         query_params = st.query_params
