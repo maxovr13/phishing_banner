@@ -93,7 +93,7 @@ else:
     st.error("No se proporcionó un token.")
 # Mostrar el formulario
 st.title("Formulario de Evaluación")
-
+st.write("Con la intención de mejorar esta herramienta, por favor responde las siguientes preguntas. En caso de haber ingresado a esta página a través de otro enlace de spear phishing, no es necesario que vuelvas a responder.")
 # Escala de Likert (del 1 al 5)
 opciones = {
     1: "Totalmente en desacuerdo",
@@ -113,31 +113,31 @@ opciones_influencia = {
 }
 
 #Preunta 1: Tiene como objteivo conocer la razon por la que entraron al enlace
-respuesta1 = st.text_area("¿Qué fue lo que te convenció de ingresar al enlace del correo?")
+respuesta1 = st.text_area("1. ¿Qué fue lo que te convenció de ingresar al enlace del correo?")
 
 #Preunta 2: Tiene como objetivo ver que tanto saben los participantes de los principios de influencia
-respuesta2 = st.radio("¿Qué principio de influencia crees que está presente en el siguiente correo?", options=list(opciones_influencia.keys()), format_func=lambda x: opciones_influencia[x])
+respuesta2 = st.radio("2. ¿Qué principio de influencia crees que está presente en el siguiente correo?", options=list(opciones_influencia.keys()), format_func=lambda x: opciones_influencia[x])
 
 # Pregunta 3: Tiene como objetivo analizar el estado en que se recibe el correo. si es que leyo poco es un gran indicio
-respuesta3 = st.radio("Leí todo el correo antes de decidir si hacer clic en el enlace.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta3 = st.radio("3. Leí todo el correo antes de decidir si hacer clic en el enlace.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 #Pregunta 4: Tiene como objetivo conocer las razones del porque entro al enlace si es que ese fue el caso
-respuesta4 = st.radio("El correo no me pareció convincente. Entré al enlace por curiosidad.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta4 = st.radio("4. El correo no me pareció convincente. Entré al enlace por curiosidad.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 # Pregunta 5: Tiene como objetivo analizar que tan convincente fue el correo
-respuesta5 = st.radio("El correo fue convincente y no dudé en ningún momento de su veracidad.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta5 = st.radio("5. El correo fue convincente y no dudé en ningún momento de su veracidad.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 #Pregunta 6: tiene como objetivo demostrar si el estar consciente de la prueba fue un factor a considerar
-respuesta6 = st.radio("Estaba consciente de que en algún momento me llegaría un correo de spear phishing, por lo que dudé de la veracidad del correo.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta6 = st.radio("6. Estaba consciente de que en algún momento me llegaría un correo de spear phishing, por lo que dudé de la veracidad del correo.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 #Pregunta 7 : Tiene como objetivo saber cuanto sabia respecto al tema el participante
-respuesta7 = st.radio("Tengo suficiente conocimiento del tema como para detectar ataques de spear phishing.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta7 = st.radio("7. Tengo suficiente conocimiento del tema como para detectar ataques de spear phishing.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 #Pregunta 8: Retroalimentacion acerca del formato del correo, ver si es necesario cambiarlo o con lo que tiene es aceptable
-respuesta8 = st.radio("Añadir imágenes o logos al correo lo haría más convincente.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta8 = st.radio("8. Añadir imágenes o logos al correo lo haría más convincente.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 #Pregunta 9  :Retroalmientacion para pruebas a futuro
-respuesta9 = st.radio("Alguien que no es consciente de estar participando en una prueba de spear phishing podría caer en la trampa y hacer clic en el enlace.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
+respuesta9 = st.radio("9. Alguien que no es consciente de estar participando en una prueba de spear phishing podría caer en la trampa y hacer clic en el enlace.", options=list(opciones.keys()), format_func=lambda x: opciones[x])
 
 
 # Botón de enviar
