@@ -171,4 +171,4 @@ if st.button("Enviar"):
         else:
             st.error("No se proporcionó un token.")
     else:
-        st.error("Por favor, selecciona una opción para ambas preguntas.")
+        st.error("Por favor, selecciona una opción para todas las preguntas.")
