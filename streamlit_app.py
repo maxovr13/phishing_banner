@@ -12,7 +12,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 # Leer datos de la hoja de cálculo
 @st.cache_data(ttl=0)  # Desactivar el caché para la lectura de datos
 def load_data():
-    return conn.read(worksheet="LLMSecurityGroup", ttl = 5) #importante para actualizacion inmediata
+    return conn.read(worksheet="LLMSecurityGroup_reciproco", ttl = 5) #importante para actualizacion inmediata
 
 data = load_data()
 
@@ -35,7 +35,7 @@ def update_access_status(token):
         df.at[index3[0], 'accedio3'] = 1
     
     # Actualizar la hoja de cálculo
-    conn.update(worksheet="LLMSecurityGroup", data=df)
+    conn.update(worksheet="LLMSecurityGroup_reciproco", data=df)
         # Convertir DataFrame a lista de listas y actualizar la hoja de cálculo
         #records = df.values.tolist()
         #header = df.columns.values.tolist()
