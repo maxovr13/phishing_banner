@@ -93,7 +93,7 @@ else:
     st.error("No se proporcionó un token.")
 # Mostrar el formulario
 st.title("Formulario para feedback")
-st.write("Con la intención de mejorar esta herramienta, por favor responde las siguientes preguntas. En caso de haber ingresado a esta página a través de otro enlace de spear phishing, no es necesario que vuelvas a responder.")
+st.write("Con la intención de mejorar esta herramienta, por favor responde las siguientes preguntas.")
 # Escala de Likert (del 1 al 5)
 opciones = {
     1: "Totalmente en desacuerdo",
@@ -164,7 +164,7 @@ if st.button("Enviar"):
                 df.at[index[0], 'pregunta9'] = respuesta9
                 
                 # Actualizar la hoja de cálculo
-                conn.update(worksheet="LLMSecurityGroup", data=df)
+                conn.update(worksheet="LLMSecurityGroup_reciproco", data=df)
                 st.success("Respuestas enviadas y guardadas con éxito.")
             else:
                 st.error("Token inválido o docente no encontrado.")
