@@ -164,7 +164,7 @@ if st.button("Enviar"):
                 df.at[index[0], 'pregunta9'] = respuesta9
                 
                 # Actualizar la hoja de cálculo
-                conn.update(worksheet="LLMSecurityGroup", data=df)
+                conn.update(worksheet="LLMSecurityGroup_reciproco", data=df)
                 st.success("Respuestas enviadas y guardadas con éxito.")
             else:
                 st.error("Token inválido o docente no encontrado.")
